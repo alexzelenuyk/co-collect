@@ -1,19 +1,20 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import {HomeScreen} from "./src/HomeScreen";
+import {ScanScreen} from "./src/ScanScreen";
+import {GenerateScreen} from "./src/GenerateScreen";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
-  );
-}
+const Stack = createStackNavigator();
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App = () => (
+    <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+            <Stack.Screen name="Home" component={HomeScreen}/>
+            <Stack.Screen name="Scan" component={ScanScreen}/>
+            <Stack.Screen name="Generate" component={GenerateScreen}/>
+        </Stack.Navigator>
+    </NavigationContainer>
+);
+
+export default App;
