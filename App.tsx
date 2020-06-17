@@ -4,6 +4,10 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {HomeScreen} from "./src/HomeScreen";
 import {ScanScreen} from "./src/ScanScreen";
 import {GenerateScreen} from "./src/GenerateScreen";
+import Amplify from "aws-amplify";
+import config from "./aws-exports";
+
+Amplify.configure(config);
 
 const Stack = createStackNavigator();
 
