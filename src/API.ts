@@ -8,8 +8,9 @@ export type CreateContactInput = {
   firstName: string,
   lastName: string,
   zip: string,
+  street: string,
   city: string,
-  phone: string,
+  _version?: number | null,
 };
 
 export type ModelContactConditionInput = {
@@ -17,8 +18,8 @@ export type ModelContactConditionInput = {
   firstName?: ModelStringInput | null,
   lastName?: ModelStringInput | null,
   zip?: ModelStringInput | null,
+  street?: ModelStringInput | null,
   city?: ModelStringInput | null,
-  phone?: ModelStringInput | null,
   and?: Array< ModelContactConditionInput | null > | null,
   or?: Array< ModelContactConditionInput | null > | null,
   not?: ModelContactConditionInput | null,
@@ -70,12 +71,14 @@ export type UpdateContactInput = {
   firstName?: string | null,
   lastName?: string | null,
   zip?: string | null,
+  street?: string | null,
   city?: string | null,
-  phone?: string | null,
+  _version?: number | null,
 };
 
 export type DeleteContactInput = {
   id?: string | null,
+  _version?: number | null,
 };
 
 export type ModelContactFilterInput = {
@@ -84,8 +87,8 @@ export type ModelContactFilterInput = {
   firstName?: ModelStringInput | null,
   lastName?: ModelStringInput | null,
   zip?: ModelStringInput | null,
+  street?: ModelStringInput | null,
   city?: ModelStringInput | null,
-  phone?: ModelStringInput | null,
   and?: Array< ModelContactFilterInput | null > | null,
   or?: Array< ModelContactFilterInput | null > | null,
   not?: ModelContactFilterInput | null,
@@ -120,11 +123,13 @@ export type CreateContactMutation = {
     firstName: string,
     lastName: string,
     zip: string,
+    street: string,
     city: string,
-    phone: string,
+    _version: number,
+    _deleted: boolean | null,
+    _lastChangedAt: number,
     createdAt: string,
     updatedAt: string,
-    owner: string | null,
   } | null,
 };
 
@@ -141,11 +146,13 @@ export type UpdateContactMutation = {
     firstName: string,
     lastName: string,
     zip: string,
+    street: string,
     city: string,
-    phone: string,
+    _version: number,
+    _deleted: boolean | null,
+    _lastChangedAt: number,
     createdAt: string,
     updatedAt: string,
-    owner: string | null,
   } | null,
 };
 
@@ -162,11 +169,43 @@ export type DeleteContactMutation = {
     firstName: string,
     lastName: string,
     zip: string,
+    street: string,
     city: string,
-    phone: string,
+    _version: number,
+    _deleted: boolean | null,
+    _lastChangedAt: number,
     createdAt: string,
     updatedAt: string,
-    owner: string | null,
+  } | null,
+};
+
+export type SyncContactsQueryVariables = {
+  filter?: ModelContactFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+  lastSync?: number | null,
+};
+
+export type SyncContactsQuery = {
+  syncContacts:  {
+    __typename: "ModelContactConnection",
+    items:  Array< {
+      __typename: "Contact",
+      id: string,
+      gender: string,
+      firstName: string,
+      lastName: string,
+      zip: string,
+      street: string,
+      city: string,
+      _version: number,
+      _deleted: boolean | null,
+      _lastChangedAt: number,
+      createdAt: string,
+      updatedAt: string,
+    } | null > | null,
+    nextToken: string | null,
+    startedAt: number | null,
   } | null,
 };
 
@@ -182,11 +221,13 @@ export type GetContactQuery = {
     firstName: string,
     lastName: string,
     zip: string,
+    street: string,
     city: string,
-    phone: string,
+    _version: number,
+    _deleted: boolean | null,
+    _lastChangedAt: number,
     createdAt: string,
     updatedAt: string,
-    owner: string | null,
   } | null,
 };
 
@@ -206,18 +247,17 @@ export type ListContactsQuery = {
       firstName: string,
       lastName: string,
       zip: string,
+      street: string,
       city: string,
-      phone: string,
+      _version: number,
+      _deleted: boolean | null,
+      _lastChangedAt: number,
       createdAt: string,
       updatedAt: string,
-      owner: string | null,
     } | null > | null,
     nextToken: string | null,
+    startedAt: number | null,
   } | null,
-};
-
-export type OnCreateContactSubscriptionVariables = {
-  owner: string,
 };
 
 export type OnCreateContactSubscription = {
@@ -228,16 +268,14 @@ export type OnCreateContactSubscription = {
     firstName: string,
     lastName: string,
     zip: string,
+    street: string,
     city: string,
-    phone: string,
+    _version: number,
+    _deleted: boolean | null,
+    _lastChangedAt: number,
     createdAt: string,
     updatedAt: string,
-    owner: string | null,
   } | null,
-};
-
-export type OnUpdateContactSubscriptionVariables = {
-  owner: string,
 };
 
 export type OnUpdateContactSubscription = {
@@ -248,16 +286,14 @@ export type OnUpdateContactSubscription = {
     firstName: string,
     lastName: string,
     zip: string,
+    street: string,
     city: string,
-    phone: string,
+    _version: number,
+    _deleted: boolean | null,
+    _lastChangedAt: number,
     createdAt: string,
     updatedAt: string,
-    owner: string | null,
   } | null,
-};
-
-export type OnDeleteContactSubscriptionVariables = {
-  owner: string,
 };
 
 export type OnDeleteContactSubscription = {
@@ -268,10 +304,12 @@ export type OnDeleteContactSubscription = {
     firstName: string,
     lastName: string,
     zip: string,
+    street: string,
     city: string,
-    phone: string,
+    _version: number,
+    _deleted: boolean | null,
+    _lastChangedAt: number,
     createdAt: string,
     updatedAt: string,
-    owner: string | null,
   } | null,
 };

@@ -13,11 +13,13 @@ export const createContact = /* GraphQL */ `
       firstName
       lastName
       zip
+      street
       city
-      phone
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
-      owner
     }
   }
 `;
@@ -32,11 +34,13 @@ export const updateContact = /* GraphQL */ `
       firstName
       lastName
       zip
+      street
       city
-      phone
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
-      owner
     }
   }
 `;
@@ -51,11 +55,13 @@ export const deleteContact = /* GraphQL */ `
       firstName
       lastName
       zip
+      street
       city
-      phone
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
-      owner
     }
   }
 `;

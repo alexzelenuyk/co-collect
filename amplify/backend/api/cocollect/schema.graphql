@@ -1,9 +1,9 @@
-type Contact @model @auth(rules: [{ allow: owner }]) {
+type Contact @model @auth{
   id: ID!
   gender: String!
   firstName: String!
   lastName: String!
   zip: String!
+  street: String!
   city: String!
-  phone: String!
 }

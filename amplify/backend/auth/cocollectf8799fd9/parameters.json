@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "cocollect344946a0_identitypool_344946a0",
+    "identityPoolName": "cocollectf8799fd9_identitypool_f8799fd9",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "cocoll344946a0",
-    "userPoolName": "cocollect344946a0_userpool_344946a0",
+    "resourceNameTruncated": "cocollf8799fd9",
+    "userPoolName": "cocollectf8799fd9_userpool_f8799fd9",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,10 +28,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "cocoll344946a0_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "cocollf8799fd9_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "344946a0",
-    "resourceName": "cocollect344946a0",
+    "sharedId": "f8799fd9",
+    "resourceName": "cocollectf8799fd9",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -46,25 +46,11 @@
         ]
     },
     "useDefault": "default",
-    "usernameAttributes": [
-        "email"
-    ],
-    "triggers": "{\"CustomMessage\":[\"verification-link\"]}",
+    "triggers": "{}",
     "userPoolGroupList": [],
-    "verificationBucketName": "cocollect344946a0verificationbucket",
     "parentStack": {
         "Ref": "AWS::StackId"
     },
     "permissions": [],
-    "dependsOn": [
-        {
-            "category": "function",
-            "resourceName": "cocollect344946a0CustomMessage",
-            "triggerProvider": "Cognito",
-            "attributes": [
-                "Arn",
-                "Name"
-            ]
-        }
-    ]
+    "dependsOn": []
 }

@@ -19,8 +19,14 @@
                     "EMAILMESSAGE": "Some body"
                 }
             },
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d3142ul0wfjn35",
+                    "type": "cicd"
+                }
+            },
             "auth": {
-                "cocollect344946a0": {}
+                "cocollectf8799fd9": {}
             }
         }
     }

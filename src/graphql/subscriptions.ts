@@ -3,50 +3,56 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateContact = /* GraphQL */ `
-  subscription OnCreateContact($owner: String!) {
-    onCreateContact(owner: $owner) {
+  subscription OnCreateContact {
+    onCreateContact {
       id
       gender
       firstName
       lastName
       zip
+      street
       city
-      phone
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
-      owner
     }
   }
 `;
 export const onUpdateContact = /* GraphQL */ `
-  subscription OnUpdateContact($owner: String!) {
-    onUpdateContact(owner: $owner) {
+  subscription OnUpdateContact {
+    onUpdateContact {
       id
       gender
       firstName
       lastName
       zip
+      street
       city
-      phone
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
-      owner
     }
   }
 `;
 export const onDeleteContact = /* GraphQL */ `
-  subscription OnDeleteContact($owner: String!) {
-    onDeleteContact(owner: $owner) {
+  subscription OnDeleteContact {
+    onDeleteContact {
       id
       gender
       firstName
       lastName
       zip
+      street
       city
-      phone
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
-      owner
     }
   }
 `;
