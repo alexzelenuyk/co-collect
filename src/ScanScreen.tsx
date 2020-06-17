@@ -1,6 +1,28 @@
 import React, {useState, useEffect} from 'react';
 import {Text, View, StyleSheet, Button} from 'react-native';
 import {BarCodeScanner} from 'expo-barcode-scanner';
+// import { API, graphqlOperation } from 'aws-amplify'
+// import { createContact } from "./graphql/mutations";
+// // import { listContacts } from "./graphql/queries";
+//
+// async function addContact() {
+//     try {
+//         // const todo = { ...formState }
+//         // setTodos([...todos, todo])
+//         // setFormState(initialState)
+//         const contact = {
+//             gender: "male",
+//             firstName: "Max",
+//             lastName: "Mustermann",
+//             zip: "22764",
+//             city: "Hamburg",
+//             phone: "0401234567890"
+//         };
+//         await API.graphql(graphqlOperation(createContact, {input: contact}))
+//     } catch (err) {
+//         console.log('error creating todo:', err)
+//     }
+// }
 
 export const ScanScreen = () => {
     const [hasPermission, setHasPermission] = useState(null);
