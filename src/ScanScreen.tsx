@@ -1,33 +1,23 @@
 import React, {useState, useEffect} from 'react';
-import {Text, View, StyleSheet, Button} from 'react-native';
+import {View, StyleSheet} from 'react-native';
+import {Button, Icon, Text} from "react-native-elements";
 import {BarCodeScanner} from 'expo-barcode-scanner';
-// import { API, graphqlOperation } from 'aws-amplify'
-// import { createContact } from "./graphql/mutations";
-// // import { listContacts } from "./graphql/queries";
-//
-// async function addContact() {
-//     try {
-//         // const todo = { ...formState }
-//         // setTodos([...todos, todo])
-//         // setFormState(initialState)
-//         const contact = {
-//             gender: "male",
-//             firstName: "Max",
-//             lastName: "Mustermann",
-//             zip: "22764",
-//             city: "Hamburg",
-//             phone: "0401234567890"
-//         };
-//         await API.graphql(graphqlOperation(createContact, {input: contact}))
-//     } catch (err) {
-//         console.log('error creating todo:', err)
-//     }
-// }
+import { API, graphqlOperation } from 'aws-amplify'
+import { createContact } from "./graphql/mutations";
+import {styles} from "./styles";
 
-export const ScanScreen = () => {
+async function addContact(data) {
+    const contact = JSON.parse(data);
+    try {
+        await API.graphql(graphqlOperation(createContact, {input: contact}))
+    } catch (err) {
+        console.log('error creating contacts:', err, data)
+    }
+}
+
+export const ScanScreen = ({ navigation }) => {
     const [hasPermission, setHasPermission] = useState(null);
     const [scanned, setScanned] = useState(false);
-    const [name, setName] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -36,10 +26,9 @@ export const ScanScreen = () => {
         })();
     }, []);
 
-    const handleBarCodeScanned = ({type, data}) => {
+    const handleBarCodeScanned = async ({type, data}) => {
         setScanned(true);
-        setName(data);
-        // alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+        await addContact(data)
     };
 
     if (hasPermission === null) {
@@ -51,24 +40,18 @@ export const ScanScreen = () => {
 
     return (
         <View style={styles.container}>
-            {name && <Text>
-                Client {name} was added to the visitors database!
-            </Text>}
-            {!name && <BarCodeScanner
+            {!scanned && <BarCodeScanner
                 onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
                 style={StyleSheet.absoluteFillObject}
             />}
 
-            {!name && scanned && <Button title={'Tap to Scan Again'} onPress={() => setScanned(false)}/>}
+            {scanned && <View>
+                <Text h4={true} style={styles.text}>
+                    Contact was added to the visitors database!
+                </Text>
+                <Button title={'Tap to Scan Again'} onPress={() => setScanned(false)} style={styles.button}/>
+                <Button title="Done" onPress={() => navigation.navigate('Home')}  style={styles.button} />
+            </View>}
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});

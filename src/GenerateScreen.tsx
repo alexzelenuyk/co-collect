@@ -1,19 +1,14 @@
 import * as React from "react";
-import {StyleSheet, Text, View} from "react-native";
+import {View} from "react-native";
+import {Text} from "react-native-elements";
+import {styles} from "./styles";
 
 export const GenerateScreen = () => {
     return (
         <View style={styles.container}>
-            <Text>Scan the code QR code to generate your personal QR code</Text>
+            <Text h4={true} style={styles.text}>
+                Scan the code below and follow the instruction to generate your personal QR code.
+            </Text>
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});

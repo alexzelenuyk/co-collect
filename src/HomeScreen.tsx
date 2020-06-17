@@ -1,52 +1,28 @@
-import {Button, StyleSheet, Text, View} from "react-native";
 import * as React from "react";
-
-import { createContact } from "./graphql/mutations";
-import { API, graphqlOperation } from 'aws-amplify'
-
-async function addContact() {
-    try {
-        const contact = {
-            gender: "male",
-            firstName: "Max",
-            lastName: "Mustermann",
-            zip: "22764",
-            city: "Hamburg",
-            phone: "0401234567890"
-        };
-        await API.graphql(graphqlOperation(createContact, {input: contact}))
-    } catch (err) {
-        console.log('error creating contacts:', err)
-    }
-}
+import {View} from "react-native";
+import {Button, Text} from "react-native-elements";
+import {styles} from "./styles";
 
 export const HomeScreen = ({ navigation }) => {
+    const switchView = (view) => navigation.navigate(view);
+
     return (
         <View style={styles.container}>
-            <Text>
+            <Text h4={true} style={styles.text}>
                 Co-collect - is an APP to collect a visitor information while visiting restaurants or any other places.
             </Text>
+
             <Button
                 title="Scan Personal Code"
-                onPress={() => navigation.navigate('Scan')}
+                onPress={() => switchView('Scan')}
+                style={styles.button}
             />
+
             <Button
                 title="Generate Personal Code"
-                onPress={() => navigation.navigate('Generate')}
-            />
-            <Button
-                title="Create Contact"
-                onPress={addContact}
+                onPress={() =>switchView('Generate')}
+                style={styles.button}
             />
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
