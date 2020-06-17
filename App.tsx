@@ -27,6 +27,7 @@ export default withAuthenticator(
     {
         signUpConfig: {
             hiddenDefaults: ['phone_number']
-        }
+        },
+        theme: { button: { backgroundColor: "green" } }
     }
 );
