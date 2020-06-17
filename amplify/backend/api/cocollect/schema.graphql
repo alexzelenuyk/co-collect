@@ -1,0 +1,9 @@
+type Contact @model {
+  id: ID!
+  gender: String!
+  firstName: String!
+  lastName: String!
+  zip: String!
+  city: String!
+  phone: String!
+}
