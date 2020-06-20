@@ -15,9 +15,6 @@ export const createContact = /* GraphQL */ `
       zip
       street
       city
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -36,9 +33,6 @@ export const updateContact = /* GraphQL */ `
       zip
       street
       city
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -57,9 +51,6 @@ export const deleteContact = /* GraphQL */ `
       zip
       street
       city
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }

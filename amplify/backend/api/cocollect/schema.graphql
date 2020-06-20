@@ -1,0 +1,13 @@
+type Contact @model
+  @auth(rules: [
+    { allow: owner, operations: [create] },
+    { allow: groups, groups: ["Admin"] }
+  ]) {
+  id: ID!
+  gender: String!
+  firstName: String!
+  lastName: String!
+  zip: String!
+  street: String!
+  city: String!
+}

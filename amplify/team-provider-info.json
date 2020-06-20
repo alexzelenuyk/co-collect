@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-cocollect-dev-153419-authRole",
+            "UnauthRoleArn": "arn:aws:iam::700483457242:role/amplify-cocollect-dev-153419-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::700483457242:role/amplify-cocollect-dev-153419-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "amplify-cocollect-dev-153419-deployment",
+            "UnauthRoleName": "amplify-cocollect-dev-153419-unauthRole",
+            "StackName": "amplify-cocollect-dev-153419",
+            "StackId": "arn:aws:cloudformation:eu-west-1:700483457242:stack/amplify-cocollect-dev-153419/c05ba0e0-b2fa-11ea-9b7a-0aae1475e00a",
+            "AmplifyAppId": "d3lxrvhxsk8azs"
+        },
+        "categories": {
+            "auth": {
+                "cocollect0b1a326d": {}
+            }
+        }
+    }
+}

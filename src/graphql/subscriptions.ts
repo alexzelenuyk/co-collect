@@ -12,9 +12,6 @@ export const onCreateContact = /* GraphQL */ `
       zip
       street
       city
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -30,9 +27,6 @@ export const onUpdateContact = /* GraphQL */ `
       zip
       street
       city
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -48,9 +42,6 @@ export const onDeleteContact = /* GraphQL */ `
       zip
       street
       city
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }

@@ -10,7 +10,6 @@ export type CreateContactInput = {
   zip: string,
   street: string,
   city: string,
-  _version?: number | null,
 };
 
 export type ModelContactConditionInput = {
@@ -73,12 +72,10 @@ export type UpdateContactInput = {
   zip?: string | null,
   street?: string | null,
   city?: string | null,
-  _version?: number | null,
 };
 
 export type DeleteContactInput = {
   id?: string | null,
-  _version?: number | null,
 };
 
 export type ModelContactFilterInput = {
@@ -125,9 +122,6 @@ export type CreateContactMutation = {
     zip: string,
     street: string,
     city: string,
-    _version: number,
-    _deleted: boolean | null,
-    _lastChangedAt: number,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -148,9 +142,6 @@ export type UpdateContactMutation = {
     zip: string,
     street: string,
     city: string,
-    _version: number,
-    _deleted: boolean | null,
-    _lastChangedAt: number,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -171,41 +162,8 @@ export type DeleteContactMutation = {
     zip: string,
     street: string,
     city: string,
-    _version: number,
-    _deleted: boolean | null,
-    _lastChangedAt: number,
     createdAt: string,
     updatedAt: string,
-  } | null,
-};
-
-export type SyncContactsQueryVariables = {
-  filter?: ModelContactFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-  lastSync?: number | null,
-};
-
-export type SyncContactsQuery = {
-  syncContacts:  {
-    __typename: "ModelContactConnection",
-    items:  Array< {
-      __typename: "Contact",
-      id: string,
-      gender: string,
-      firstName: string,
-      lastName: string,
-      zip: string,
-      street: string,
-      city: string,
-      _version: number,
-      _deleted: boolean | null,
-      _lastChangedAt: number,
-      createdAt: string,
-      updatedAt: string,
-    } | null > | null,
-    nextToken: string | null,
-    startedAt: number | null,
   } | null,
 };
 
@@ -223,9 +181,6 @@ export type GetContactQuery = {
     zip: string,
     street: string,
     city: string,
-    _version: number,
-    _deleted: boolean | null,
-    _lastChangedAt: number,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -249,14 +204,10 @@ export type ListContactsQuery = {
       zip: string,
       street: string,
       city: string,
-      _version: number,
-      _deleted: boolean | null,
-      _lastChangedAt: number,
       createdAt: string,
       updatedAt: string,
     } | null > | null,
     nextToken: string | null,
-    startedAt: number | null,
   } | null,
 };
 
@@ -270,9 +221,6 @@ export type OnCreateContactSubscription = {
     zip: string,
     street: string,
     city: string,
-    _version: number,
-    _deleted: boolean | null,
-    _lastChangedAt: number,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -288,9 +236,6 @@ export type OnUpdateContactSubscription = {
     zip: string,
     street: string,
     city: string,
-    _version: number,
-    _deleted: boolean | null,
-    _lastChangedAt: number,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -306,9 +251,6 @@ export type OnDeleteContactSubscription = {
     zip: string,
     street: string,
     city: string,
-    _version: number,
-    _deleted: boolean | null,
-    _lastChangedAt: number,
     createdAt: string,
     updatedAt: string,
   } | null,
