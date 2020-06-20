@@ -14,5 +14,10 @@ export const styles = StyleSheet.create({
     button: {
         margin: 20,
         width: 300
+    },
+    horizontal: {
+        flexDirection: "row",
+        justifyContent: "space-around",
+        padding: 10
     }
 });

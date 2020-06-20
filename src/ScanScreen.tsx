@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {View, StyleSheet} from 'react-native';
-import {Button, Icon, Text} from "react-native-elements";
+import {Button, Text} from "react-native-elements";
 import {BarCodeScanner} from 'expo-barcode-scanner';
 import { API, graphqlOperation } from 'aws-amplify'
 import { createContact } from "./graphql/mutations";
