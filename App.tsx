@@ -7,7 +7,7 @@ import {GenerateScreen} from "./src/GenerateScreen";
 import Amplify from "aws-amplify";
 import config from "./aws-exports";
 import {withAuthenticator} from "aws-amplify-react-native";
-import {ClientsScreen} from "./src/ClientsScreen";
+import {VisitorsScreen} from "./src/VisitorsScreen";
 
 Amplify.configure(config);
 
@@ -16,10 +16,10 @@ const Stack = createStackNavigator();
 const App = () => (
     <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
-            <Stack.Screen name="Home" component={HomeScreen}/>
+            <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}} />
             <Stack.Screen name="Scan" component={ScanScreen}/>
             <Stack.Screen name="Generate" component={GenerateScreen}/>
-            <Stack.Screen name="ClientsScreen" component={ClientsScreen}/>
+            <Stack.Screen name="Visitors" component={VisitorsScreen}/>
         </Stack.Navigator>
     </NavigationContainer>
 );

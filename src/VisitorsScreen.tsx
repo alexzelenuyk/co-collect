@@ -1,5 +1,5 @@
 import * as React from "react";
-import {ActivityIndicator, Text, View} from "react-native";
+import {ActivityIndicator, View} from "react-native";
 import {listContacts} from "./graphql/queries";
 import {API, graphqlOperation} from 'aws-amplify'
 import {styles} from "./styles";
@@ -7,7 +7,7 @@ import {useEffect} from "react";
 import {useState} from "react";
 import {ListItem} from "react-native-elements";
 
-export const ClientsScreen = ({ navigation }) => {
+export const VisitorsScreen = () => {
     const [contacts, setContacts] = useState([]);
 
     useEffect(() => {
@@ -25,13 +25,13 @@ export const ClientsScreen = ({ navigation }) => {
 
     return (
         <View>
-            {contacts && contacts.map((contact, key) => (
+            {contacts.map(({firstName, lastName, createdAt}, key) => (
                 <ListItem
                     key={key}
-                    title={
-                        `${new Date(contact.createdAt).toLocaleDateString()}: ${contact.firstName} ${contact.lastName}`
-                    }
-                    bottomDivider
+                    title={`${firstName} ${lastName}`}
+                    subtitle={new Date(createdAt).toLocaleDateString()}
+                    leftIcon={{ name: 'check' }}
+                    bottomDivider={true}
                 />
             ))}
         </View>

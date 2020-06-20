@@ -2,18 +2,9 @@ import React, {useState, useEffect} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Button, Text} from "react-native-elements";
 import {BarCodeScanner} from 'expo-barcode-scanner';
-import { API, graphqlOperation } from 'aws-amplify'
-import { createContact } from "./graphql/mutations";
+import {API, graphqlOperation} from 'aws-amplify'
+import {createContact} from "./graphql/mutations";
 import {styles} from "./styles";
-
-async function addContact(data) {
-    const contact = JSON.parse(data);
-    try {
-        await API.graphql(graphqlOperation(createContact, {input: contact}))
-    } catch (err) {
-        console.log('error creating contacts:', err, data)
-    }
-}
 
 export const ScanScreen = ({ navigation }) => {
     const [hasPermission, setHasPermission] = useState(null);
@@ -26,9 +17,9 @@ export const ScanScreen = ({ navigation }) => {
         })();
     }, []);
 
-    const handleBarCodeScanned = async ({type, data}) => {
+    const handleBarCodeScanned = async ({data}) => {
         setScanned(true);
-        await addContact(data)
+        await API.graphql(graphqlOperation(createContact, {input: JSON.parse(data)}))
     };
 
     if (hasPermission === null) {
