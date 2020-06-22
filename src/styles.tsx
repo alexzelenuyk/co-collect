@@ -24,5 +24,13 @@ export const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-around",
         padding: 10
-    }
+    },
+    qrcode: {
+        margin: 20,
+        width: 200,
+        height: 200
+    },
+    title: {
+        margin: 20
+    },
 });

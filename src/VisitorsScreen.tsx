@@ -25,7 +25,7 @@ export const VisitorsScreen = () => {
 
     return (
         <View>
-            <Text h2={true}>Recent visitors:</Text>
+            <Text h2={true} style={styles.title}>Recent visitors:</Text>
 
             {contacts.map(({name, address, zip, city, createdAt}, key) => (
                 <ListItem
