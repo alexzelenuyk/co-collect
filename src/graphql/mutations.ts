@@ -9,11 +9,9 @@ export const createContact = /* GraphQL */ `
   ) {
     createContact(input: $input, condition: $condition) {
       id
-      gender
-      firstName
-      lastName
+      name
       zip
-      street
+      address
       city
       createdAt
       updatedAt
@@ -27,11 +25,9 @@ export const updateContact = /* GraphQL */ `
   ) {
     updateContact(input: $input, condition: $condition) {
       id
-      gender
-      firstName
-      lastName
+      name
       zip
-      street
+      address
       city
       createdAt
       updatedAt
@@ -45,11 +41,9 @@ export const deleteContact = /* GraphQL */ `
   ) {
     deleteContact(input: $input, condition: $condition) {
       id
-      gender
-      firstName
-      lastName
+      name
       zip
-      street
+      address
       city
       createdAt
       updatedAt

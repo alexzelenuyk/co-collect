@@ -9,6 +9,7 @@ import {styles} from "./styles";
 export const ScanScreen = ({ navigation }) => {
     const [hasPermission, setHasPermission] = useState(null);
     const [scanned, setScanned] = useState(false);
+    const [error, setError] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -18,8 +19,18 @@ export const ScanScreen = ({ navigation }) => {
     }, []);
 
     const handleBarCodeScanned = async ({data}) => {
+        try{
+            await API.graphql(graphqlOperation(createContact, {input: JSON.parse(data)}));
+        } catch (error) {
+            console.log(error)
+            setError(true)
+        }
         setScanned(true);
-        await API.graphql(graphqlOperation(createContact, {input: JSON.parse(data)}))
+    };
+
+    const retryClick = () => {
+        setScanned(false)
+        setError(false)
     };
 
     if (hasPermission === null) {
@@ -38,9 +49,9 @@ export const ScanScreen = ({ navigation }) => {
 
             {scanned && <View>
                 <Text h4={true} style={styles.text}>
-                    Contact was added to the visitors database!
+                    {error ? "Failed to save, try again later" : "Contact was added to the visitors database!"}
                 </Text>
-                <Button title={'Tap to Scan Again'} onPress={() => setScanned(false)} style={styles.button}/>
+                <Button title={'Tap to Scan Again'} onPress={retryClick} style={styles.button}/>
                 <Button title="Done" onPress={() => navigation.navigate('Home')}  style={styles.button} />
             </View>}
         </View>

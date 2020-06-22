@@ -6,11 +6,9 @@ export const onCreateContact = /* GraphQL */ `
   subscription OnCreateContact {
     onCreateContact {
       id
-      gender
-      firstName
-      lastName
+      name
       zip
-      street
+      address
       city
       createdAt
       updatedAt
@@ -21,11 +19,9 @@ export const onUpdateContact = /* GraphQL */ `
   subscription OnUpdateContact {
     onUpdateContact {
       id
-      gender
-      firstName
-      lastName
+      name
       zip
-      street
+      address
       city
       createdAt
       updatedAt
@@ -36,11 +32,9 @@ export const onDeleteContact = /* GraphQL */ `
   subscription OnDeleteContact {
     onDeleteContact {
       id
-      gender
-      firstName
-      lastName
+      name
       zip
-      street
+      address
       city
       createdAt
       updatedAt

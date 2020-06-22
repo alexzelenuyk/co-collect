@@ -5,7 +5,7 @@ import {API, graphqlOperation} from 'aws-amplify'
 import {styles} from "./styles";
 import {useEffect} from "react";
 import {useState} from "react";
-import {ListItem} from "react-native-elements";
+import {Text, ListItem} from "react-native-elements";
 
 export const VisitorsScreen = () => {
     const [contacts, setContacts] = useState([]);
@@ -25,15 +25,18 @@ export const VisitorsScreen = () => {
 
     return (
         <View>
-            {contacts.map(({firstName, lastName, createdAt}, key) => (
+            <Text h2={true}>Recent visitors:</Text>
+
+            {contacts.map(({name, address, zip, city, createdAt}, key) => (
                 <ListItem
                     key={key}
-                    title={`${firstName} ${lastName}`}
+                    title={`${name} ${address} ${zip} ${city}`}
                     subtitle={new Date(createdAt).toLocaleDateString()}
                     leftIcon={{ name: 'check' }}
                     bottomDivider={true}
                 />
             ))}
+            {contacts.length == 0 && <Text>not available</Text>}
         </View>
     )
 };

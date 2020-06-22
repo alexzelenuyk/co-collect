@@ -4,10 +4,8 @@ type Contact @model
     { allow: groups, groups: ["Admin"] }
   ]) {
   id: ID!
-  gender: String!
-  firstName: String!
-  lastName: String!
+  name: String!
   zip: String!
-  street: String!
+  address: String!
   city: String!
 }

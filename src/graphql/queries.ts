@@ -6,11 +6,9 @@ export const getContact = /* GraphQL */ `
   query GetContact($id: ID!) {
     getContact(id: $id) {
       id
-      gender
-      firstName
-      lastName
+      name
       zip
-      street
+      address
       city
       createdAt
       updatedAt
@@ -26,11 +24,9 @@ export const listContacts = /* GraphQL */ `
     listContacts(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        gender
-        firstName
-        lastName
+        name
         zip
-        street
+        address
         city
         createdAt
         updatedAt
