@@ -2,6 +2,12 @@
   "expo": {
     "name":"co-collect",
     "description":"Prototype App that helps small business to collect visitors information",
-    "slug":"co-collect-app"
+    "slug":"co-collect-app",
+    "privacy": "unlisted",
+    "ios": {
+      "bundleIdentifier": "com.zeleniuk",
+      "buildNumber": "0.0.1"
+    },
+    "icon": "./assets/icon.png"
   }
 }
